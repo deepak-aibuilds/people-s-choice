@@ -35,8 +35,8 @@ function CollectionPage() {
             collection.
           </>
         }
-        intro="Every room groups objects by mood, material and use, so the collection feels like a sequence of chambers rather than a product grid."
-        aside={"Six curated rooms\nPresented as a house museum"}
+        intro="Each room groups objects by feeling, material and use. This makes the collection feel like a series of small rooms, not just a list of products."
+        aside={"Six chosen rooms\nShown like a small museum"}
       />
 
       <section className="mx-auto max-w-[1600px] px-6 py-16">
@@ -52,9 +52,13 @@ function CollectionPage() {
                 className="aspect-[4/5] w-full object-cover"
               />
               <div className="p-6">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Room {room.numeral}</p>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+                  Room {room.numeral}
+                </p>
                 <h2 className="mt-3 font-display text-4xl tracking-tight">{room.title}</h2>
-                <p className="mt-2 text-[11px] tracking-[0.24em] uppercase text-muted-foreground">{room.subtitle}</p>
+                <p className="mt-2 text-[11px] tracking-[0.24em] uppercase text-muted-foreground">
+                  {room.subtitle}
+                </p>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{room.summary}</p>
               </div>
             </article>

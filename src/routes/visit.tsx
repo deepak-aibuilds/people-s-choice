@@ -35,7 +35,7 @@ function VisitPage() {
             front room.
           </>
         }
-        intro="The visit page is treated as an arrival card: where to find the house, when to come and what kind of atmosphere to expect when you step inside."
+        intro="This page tells you where to find us, when to visit and what kind of mood to expect when you walk in."
         aside={"Bharatpur XII\nOpen Everyday"}
       />
 
@@ -53,8 +53,12 @@ function VisitPage() {
           <div className="divide-y divide-border border-y border-border">
             {visitFacts.map((fact) => (
               <div key={fact.label} className="flex items-start justify-between gap-4 py-4">
-                <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{fact.label}</span>
-                <span className="text-right text-sm leading-relaxed text-foreground/85">{fact.value}</span>
+                <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+                  {fact.label}
+                </span>
+                <span className="text-right text-sm leading-relaxed text-foreground/85">
+                  {fact.value}
+                </span>
               </div>
             ))}
           </div>
@@ -62,7 +66,9 @@ function VisitPage() {
           <div className="mt-8 border border-border bg-secondary/30 p-6">
             <h2 className="font-display text-3xl tracking-tight">What to expect</h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              A narrow, warmly lit house of textiles, hemp pieces, jewelry and ritual objects. The experience is intimate and walk-in friendly, with each room composed like a small exhibition.
+              A small, warmly lit shop full of textiles, hemp pieces, jewelry and ritual objects. It
+              feels close and friendly to walk into, with each room arranged like a small
+              exhibition.
             </p>
           </div>
         </div>

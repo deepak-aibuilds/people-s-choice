@@ -19,32 +19,28 @@ export const heroSlides = [
   {
     code: "Plate I",
     title: "The house at Bharatpur XII",
-    note:
-      "A narrow storefront staged like a living museum, where shawls, ritual brass and hemp weave are arranged as a procession rather than a shop window.",
+    note: "Our shop is set up like a small museum. Shawls, brass pieces and hemp weaves are placed in a clear order, not packed together like an ordinary store.",
     meta: "ESTD. 2026 · Open Everyday",
     image: storefront,
   },
   {
     code: "Plate II",
     title: "Adornment in color and stone",
-    note:
-      "Turquoise, coral and lapis are set against warm cloth like archival specimens, giving the jewelry room a ceremonial stillness.",
+    note: "Turquoise, coral and lapis stones are placed on warm cloth, like pieces in a museum case. This gives the jewelry room a calm, special feeling.",
     meta: "Collection wing · Adornment",
     image: productEarrings,
   },
   {
     code: "Plate III",
     title: "Ritual sound in brass",
-    note:
-      "Hand-hammered singing bowls are shown with the quiet dignity of instruments waiting to be heard.",
+    note: "Hand-hammered singing bowls are displayed with care, like real instruments waiting to be played.",
     meta: "Collection wing · Resonance",
     image: productBowls,
   },
   {
     code: "Plate IV",
     title: "Hemp weave for everyday carrying",
-    note:
-      "Softly structured travel pouches and natural fibers bring the practical warmth of Nepali craft into the collection.",
+    note: "Soft, well-made travel pouches made from natural hemp fiber show the warm, useful side of Nepali craft.",
     meta: "Collection wing · Hemp Atelier",
     image: productHemp,
   },
@@ -56,40 +52,38 @@ export const collectionRooms = [
     title: "Hemp Atelier",
     subtitle: "Travel pouches, tote bags and soft carriers",
     image: productHemp,
-    summary:
-      "Handwoven hemp pieces with quiet structure, earthy texture and practical beauty for daily ritual.",
+    summary: "Hand-woven hemp bags and pouches. Strong, simple and useful for everyday life.",
   },
   {
     numeral: "II",
     title: "Adornment",
-    subtitle: "Earrings, necklaces and small ceremonial details",
+    subtitle: "Earrings, necklaces and other small jewelry",
     image: productEarrings,
     summary:
-      "Jewelry shaped by vibrant stone inlay, floral motifs and the color language of Himalayan ornament.",
+      "Jewelry with bright stones and flower patterns, made in the traditional Himalayan style.",
   },
   {
     numeral: "III",
     title: "Pashmina Room",
-    subtitle: "Shawls, wraps and layered softness",
+    subtitle: "Shawls and soft wraps",
     image: productPashmina,
-    summary:
-      "Light-catching folds of pashmina in muted jewel tones, arranged like textile studies.",
+    summary: "Soft pashmina shawls in gentle colors. Light and warm, good for any season.",
   },
   {
     numeral: "IV",
     title: "Resonance",
-    subtitle: "Singing bowls, bells and meditative brass",
+    subtitle: "Singing bowls, bells and brass for meditation",
     image: productBowls,
     summary:
-      "Ritual brassware chosen for tone, engraving and the calm presence of hand-finished metal.",
+      "Brass singing bowls and bells, chosen for their sound, design and careful hand-finishing.",
   },
   {
     numeral: "V",
     title: "Dzi Cabinet",
-    subtitle: "Symbolic beads, cords and protective talismans",
+    subtitle: "Symbolic beads, cords and protective charms",
     image: productDzi,
     summary:
-      "Dzi-inspired bead pieces presented as amulets of pattern, contrast and cultural memory.",
+      "Dzi-style beads believed to bring protection and good luck. Each one has its own pattern and meaning.",
   },
   {
     numeral: "VI",
@@ -97,38 +91,59 @@ export const collectionRooms = [
     subtitle: "Wood figures, boxes and small altar objects",
     image: productWood,
     summary:
-      "Carved wood objects with serene silhouettes and cabinet-like detailing for contemplative interiors.",
+      "Hand-carved wooden figures and boxes. Simple shapes and fine detail, good for a calm home.",
   },
 ];
 
 export const journalEntries = [
   {
     numeral: "01",
+    slug: "storefront-gallery",
     title: "Why the storefront feels like a gallery",
     excerpt:
-      "The entrance at People's Choice is composed like a threshold exhibition — layered, lit and slow to reveal itself.",
+      "When you walk into People's Choice, it feels like stepping into a small gallery. The light, the layout and the slow reveal of each shelf are all done on purpose.",
     image: storefront,
+    body: [
+      "When you walk into People's Choice, it feels different from a normal shop. The light is soft. The shelves are spaced out. Each object has room to be seen on its own.",
+      "This is on purpose. Instead of filling every shelf with as much stock as possible, we leave space around each piece. A hemp bag, a brass bowl, a pashmina shawl — each one gets a small stage of its own.",
+      "We did this because the objects in this shop are made by hand, by real artisans in Nepal. A crowded shelf makes it hard to notice that. A calm, open layout gives each piece a chance to be looked at properly, the same way you would look at something in a small museum.",
+      "So when you step through our door, take your time. Walk slowly. The shop is built for that.",
+    ],
   },
   {
     numeral: "02",
-    title: "Hemp's tactile elegance",
+    slug: "hemp-simple-beauty",
+    title: "The simple beauty of hemp",
     excerpt:
-      "The beauty of hemp lies in restraint: its weave ages well, holds shape and carries the visible memory of the loom.",
+      "Hemp doesn't need decoration to look good. Its weave gets better with age, holds its shape well and still shows the pattern of the hand loom.",
     image: productHemp,
+    body: [
+      "Hemp is one of the simplest materials we sell, and that is exactly why we love it. It doesn't need bright colors or extra decoration. The weave itself is already beautiful.",
+      "Each hemp bag or pouch in our shop is made on a hand loom, by hand, thread by thread. If you look closely, you can still see the pattern of the loom in the fabric. No two pieces are exactly the same.",
+      "Hemp also gets better with age. It holds its shape, it softens with use, and it lasts for years. This is part of why Nepali makers have used it for so long — it is strong, simple and honest material.",
+      "We keep our hemp room simple too. No loud colors, no extra display. Just the bags, the pouches, and the natural texture of the fiber, given space to speak for itself.",
+    ],
   },
   {
     numeral: "03",
+    slug: "singing-bowls-sound",
     title: "Objects that sound as beautiful as they look",
     excerpt:
-      "Singing bowls are chosen not only for decoration but for tone, resonance and the mark of the maker's hand.",
+      "We choose our singing bowls not only for how they look, but for how they sound. Each one carries the mark of the artisan who made it.",
     image: productBowls,
+    body: [
+      "Most shops choose singing bowls and bells based on how they look on a shelf. We do something different. Before we decide to sell a bowl, someone in our team strikes it and listens.",
+      "A good singing bowl has a clear, steady tone that lasts a few seconds after it is struck. That sound comes from the metal, the shape and the way it was hand-hammered. You cannot get that sound from a machine-made copy.",
+      "Every bowl and bell in our Resonance room is chosen this way. We look at the engraving, we check the weight in the hand, and most importantly, we listen to the sound it makes.",
+      "When you visit, we encourage you to do the same. Pick up a bowl. Strike it gently. Listen. That is the best way to understand why we chose it.",
+    ],
   },
 ];
 
 export const materialNotes = [
   "Natural hemp weave from Nepali makers",
-  "Turquoise, coral and lapis-inspired stonework",
-  "Soft pashmina in seasonal color stories",
+  "Turquoise, coral and lapis stones",
+  "Soft pashmina in colors for every season",
   "Brass ritual objects and hand-carved wood",
 ];
 
@@ -137,25 +152,25 @@ export const artisanStudios = [
     title: "Hemp Weavers",
     region: "Chitwan & surrounding valleys",
     description:
-      "Practical objects are built from fiber, patience and repeated hand-finishing rather than factory uniformity.",
+      "Hemp items are made by hand, with care and patience, not in a factory. Every piece is a little different.",
   },
   {
     title: "Metalworkers",
     region: "Kathmandu valley traditions",
     description:
-      "Bowls and ritual brassware are valued for sound, weight and the soft irregularity of hand-hammered surfaces.",
+      "Our brass bowls and bells are valued for their sound, their weight, and the small natural marks left by hand-hammering.",
   },
   {
     title: "Textile Finishers",
     region: "House-selected weaving partners",
     description:
-      "Shawls are chosen for drape, warmth and a color register that feels lived-in rather than loud.",
+      "We choose shawls for how they fall, how warm they are, and soft colors that feel comfortable, not flashy.",
   },
   {
     title: "Wood Carvers",
     region: "Small workshop collections",
     description:
-      "Compact altar objects and carved figures bring warmth, devotion and cabinet-level craftsmanship into the home.",
+      "Small wooden figures and prayer objects, carved with skill and care, made to bring warmth into any home.",
   },
 ];
 

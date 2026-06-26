@@ -35,8 +35,8 @@ function HouseOfCraftPage() {
             like a museum.
           </>
         }
-        intro="This room explains the visual logic of People's Choice: objects are presented with breathing space, tactile warmth and a sense of ritual calm."
-        aside={"Museum structure\nRetail warmth"}
+        intro="This page explains how People's Choice is designed. Objects are given space to breathe, with a warm feel and a calm, careful mood."
+        aside={"Museum-style layout\nFriendly, warm shopping"}
       />
 
       <section className="mx-auto grid max-w-[1600px] gap-6 px-6 py-16 md:grid-cols-2">
@@ -57,10 +57,12 @@ function HouseOfCraftPage() {
           />
           <div className="border border-border bg-secondary/30 p-6">
             <h2 className="font-display text-4xl tracking-tight">
-              The atmosphere is calm, tactile and intentional.
+              The mood here is calm, hands-on and planned with care.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Instead of pushing volume, the house privileges composition. Texture is allowed to read slowly. Each room balances practical craft with gallery-like restraint, making the shopping experience feel closer to discovering a collection.
+              Instead of filling the shop with too many items, we focus on how things are arranged.
+              You can take your time noticing the textures. Each room mixes useful craft with the
+              calm feel of a gallery, so shopping here feels more like discovering a collection.
             </p>
           </div>
         </div>

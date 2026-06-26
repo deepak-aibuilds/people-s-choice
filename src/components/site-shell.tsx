@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "@tanstack/react-router";
+import { Menu } from "lucide-react";
 
 import logoMark from "@/assets/pch-mark.png";
 import {
@@ -10,6 +11,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { heroSlides, navItems } from "@/lib/site-content";
 
@@ -17,22 +26,40 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border">
-        <div className="mx-auto grid max-w-[1600px] grid-cols-3 items-center px-6 py-4 text-[11px] tracking-[0.22em] uppercase">
-          <div className="text-muted-foreground">Bharatpur XII · Chitwan, Nepal</div>
+        {/* On mobile, only the shop name shows. Location/ESTD. become a 3-col
+            grid (their original layout) at md+, where there's room for them. */}
+        <div className="mx-auto flex max-w-[1600px] items-center justify-center px-6 py-3 text-[11px] tracking-[0.22em] uppercase md:grid md:grid-cols-3 md:py-4">
+          <div className="hidden text-muted-foreground md:block">
+            Bharatpur XII · Chitwan, Nepal
+          </div>
           <div className="text-center font-medium">People&apos;s Choice — Handicrafts</div>
-          <div className="text-right text-muted-foreground">ESTD. 2026 · Open Everyday</div>
+          <div className="hidden text-right text-muted-foreground md:block">
+            ESTD. 2026 · Open Everyday
+          </div>
         </div>
 
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 border-t border-border px-6 py-5">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 border-t border-border px-6 py-4 md:py-5">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logoMark} alt="People's Choice Handicrafts logo" width={44} height={44} className="h-11 w-11" />
+            <img
+              src={logoMark}
+              alt="People's Choice Handicrafts logo"
+              width={44}
+              height={44}
+              className="h-9 w-9 md:h-11 md:w-11"
+            />
             <div className="leading-tight">
-              <div className="font-display text-[1.65rem] tracking-tight">People&apos;s Choice</div>
-              <div className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground">Handicrafts</div>
+              <div className="font-display text-[1.3rem] tracking-tight md:text-[1.65rem]">
+                People&apos;s Choice
+              </div>
+              <div className="text-[9px] tracking-[0.3em] uppercase text-muted-foreground md:text-[10px] md:tracking-[0.35em]">
+                Handicrafts
+              </div>
             </div>
           </Link>
 
-          <nav className="flex flex-wrap items-center justify-end gap-x-8 gap-y-2 text-[11px] tracking-[0.28em] uppercase text-muted-foreground">
+          {/* Full nav, desktop only. On mobile this used to wrap onto several
+              lines right under the logo, which is the source of the clutter. */}
+          <nav className="hidden items-center justify-end gap-x-8 text-[11px] tracking-[0.28em] uppercase text-muted-foreground md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.to}
@@ -45,6 +72,35 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
           </nav>
+
+          {/* Mobile-only menu trigger, opens the nav in a drawer instead. */}
+          <Sheet>
+            <SheetTrigger
+              className="flex h-9 w-9 items-center justify-center md:hidden"
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </SheetTrigger>
+            <SheetContent side="right" className="w-4/5">
+              <SheetHeader>
+                <SheetTitle className="font-display text-xl">People&apos;s Choice</SheetTitle>
+              </SheetHeader>
+              <nav className="mt-8 flex flex-col gap-6 text-[12px] tracking-[0.25em] uppercase text-muted-foreground">
+                {navItems.map((item) => (
+                  <SheetClose key={item.to} asChild>
+                    <Link
+                      to={item.to}
+                      activeProps={{ className: "text-foreground" }}
+                      activeOptions={{ exact: item.to === "/" }}
+                      className="transition-colors hover:text-foreground"
+                    >
+                      {item.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
 
@@ -53,10 +109,13 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
       <footer className="border-t border-border">
         <div className="mx-auto grid max-w-[1600px] gap-8 px-6 py-16 md:grid-cols-12">
           <div className="md:col-span-4">
-            <div className="font-display text-3xl tracking-tight">A living collection of Nepali craft.</div>
+            <div className="font-display text-3xl tracking-tight">
+              A real collection of Nepali craft.
+            </div>
           </div>
           <div className="text-sm leading-relaxed text-muted-foreground md:col-span-4">
-            People&apos;s Choice Handicrafts brings together hemp, pashmina, adornment and ritual objects in a house that feels curated rather than commercial.
+            People&apos;s Choice Handicrafts brings together hemp, pashmina, jewelry and ritual
+            objects in one place. It feels like a small museum, not just a shop.
           </div>
           <div className="text-[11px] tracking-[0.24em] uppercase text-muted-foreground md:col-span-4 md:text-right">
             Bharatpur XII · Chitwan, Nepal
@@ -84,8 +143,12 @@ export function PageLead({
     <section className="border-b border-border">
       <div className="mx-auto grid max-w-[1600px] gap-10 px-6 py-20 md:grid-cols-12 md:py-28">
         <div className="md:col-span-5">
-          <p className="mb-6 text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{eyebrow}</p>
-          <h1 className="font-display text-6xl leading-[0.92] tracking-tight md:text-7xl">{title}</h1>
+          <p className="mb-6 text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+            {eyebrow}
+          </p>
+          <h1 className="font-display text-6xl leading-[0.92] tracking-tight md:text-7xl">
+            {title}
+          </h1>
         </div>
         <div className="md:col-span-4 md:col-start-7 md:pt-2">
           <p className="text-[15px] leading-relaxed text-foreground/85">{intro}</p>
@@ -126,18 +189,19 @@ export function MuseumHeroCarousel() {
       {/* Hero headline — its own spacious band above the carousel */}
       <div className="mx-auto max-w-[1600px] px-6 pb-8 pt-14 md:pt-20">
         <p className="mb-5 text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-          Now on view — permanent collection
+          Now showing — our full collection
         </p>
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-16">
           <h1 className="font-display text-5xl leading-[0.92] tracking-tight md:text-[5.5rem]">
-            A flowing museum
+            A small museum
             <br />
-            of everyday craft.
+            for everyday craft.
           </h1>
           {/* CHANGE: Descriptor moved to its own flex column, right-aligned on desktop.
               No longer crammed beside the headline — it reads as a caption, not a subtitle. */}
           <p className="max-w-xs pb-1 text-sm leading-relaxed text-muted-foreground md:text-right">
-            Each plate slides into the next — storefront, object, material, ritual.
+            Each photo shows a different part of our shop: the storefront, the objects and the
+            materials we use.
           </p>
         </div>
       </div>
@@ -161,9 +225,15 @@ export function MuseumHeroCarousel() {
                   {/* CHANGE: Panel is now more spacious (p-8 vs p-6), with larger title and better line-height. */}
                   <div className="flex flex-col justify-between p-8 md:col-span-4 md:border-l md:border-border">
                     <div>
-                      <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{slide.code}</p>
-                      <h2 className="mt-4 font-display text-3xl leading-[1.05] tracking-tight md:text-4xl">{slide.title}</h2>
-                      <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{slide.note}</p>
+                      <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+                        {slide.code}
+                      </p>
+                      <h2 className="mt-4 font-display text-3xl leading-[1.05] tracking-tight md:text-4xl">
+                        {slide.title}
+                      </h2>
+                      <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                        {slide.note}
+                      </p>
                     </div>
                     <div className="mt-10 border-t border-border pt-5 text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
                       {slide.meta}
@@ -184,7 +254,7 @@ export function MuseumHeroCarousel() {
                   onClick={() => api?.scrollTo(i)}
                   className={cn(
                     "h-px w-8 transition-all duration-300",
-                    i === current ? "bg-foreground" : "bg-border hover:bg-muted-foreground"
+                    i === current ? "bg-foreground" : "bg-border hover:bg-muted-foreground",
                   )}
                   aria-label={`Go to slide ${i + 1}`}
                 />
@@ -201,7 +271,11 @@ export function MuseumHeroCarousel() {
   );
 }
 
-export function SectionNavStrip({ items }: { items: Array<{ label: string; to: string; align?: "left" | "center" | "right" }> }) {
+export function SectionNavStrip({
+  items,
+}: {
+  items: Array<{ label: string; to: string; align?: "left" | "center" | "right" }>;
+}) {
   return (
     <nav className="mx-auto grid max-w-[1600px] gap-px border-b border-border px-6 text-[11px] tracking-[0.25em] uppercase md:grid-cols-5">
       {items.map((item) => (
@@ -221,12 +295,31 @@ export function SectionNavStrip({ items }: { items: Array<{ label: string; to: s
   );
 }
 
-export function EditorialCard({ image, numeral, title, body }: { image: string; numeral: string; title: string; body: string }) {
+export function EditorialCard({
+  image,
+  numeral,
+  title,
+  body,
+}: {
+  image: string;
+  numeral: string;
+  title: string;
+  body: string;
+}) {
   return (
     <article className="border border-border bg-card">
-      <img src={image} alt={title} width={896} height={1216} loading="lazy" className="aspect-[4/5] w-full object-cover" />
+      <img
+        src={image}
+        alt={title}
+        width={896}
+        height={1216}
+        loading="lazy"
+        className="aspect-[4/5] w-full object-cover"
+      />
       <div className="p-6">
-        <p className="text-[10px] tracking-[0.28em] uppercase text-muted-foreground">Room {numeral}</p>
+        <p className="text-[10px] tracking-[0.28em] uppercase text-muted-foreground">
+          Room {numeral}
+        </p>
         <h3 className="mt-3 font-display text-3xl tracking-tight">{title}</h3>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{body}</p>
       </div>

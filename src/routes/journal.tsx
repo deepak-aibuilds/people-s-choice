@@ -60,12 +60,16 @@ export const Route = createFileRoute("/journal")({
       // Geo signals — help local & map-based search engines (Google Maps AI, Bing Local)
       { name: "geo.region", content: "NP-BA" },
       { name: "geo.placename", content: "Bharatpur, Chitwan, Nepal" },
+    ],
 
-      // Article structured data (JSON-LD) — enables Google rich results.
-      // Each journal entry is represented as an Article entity.
+    // Article structured data (JSON-LD) — enables Google rich results.
+    // Each journal entry is represented as an Article entity. This must be a
+    // real <script type="application/ld+json"> tag (via `scripts`), not a
+    // <meta> tag — a meta tag's content is never parsed as structured data.
+    scripts: [
       {
-        name: "application/ld+json",
-        content: JSON.stringify({
+        type: "application/ld+json",
+        children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Blog",
           name: "People's Choice Handicrafts Journal",
@@ -107,8 +111,8 @@ function JournalPage() {
             display rooms.
           </>
         }
-        intro="Short writing pieces explain why certain objects are shown the way they are — through light, spacing, material contrast and local memory."
-        aside={"Editorial notes\nMaterial stories"}
+        intro="Short stories explain why objects are displayed the way they are — through light, spacing, material choices and local history."
+        aside={"Notes from us\nMaterial stories"}
       />
 
       {/* ── Entry grid ──────────────────────────────────────────────────────
@@ -133,11 +137,17 @@ function JournalPage() {
           </span>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-2 xl:gap-14" itemScope itemType="https://schema.org/Blog">
+        <div
+          className="grid gap-10 lg:grid-cols-2 xl:gap-14"
+          itemScope
+          itemType="https://schema.org/Blog"
+        >
           {journalEntries.map((entry, index) => (
-            <article
+            <Link
               key={entry.numeral}
-              className="group border border-border bg-card"
+              to="/journal/$slug"
+              params={{ slug: entry.slug }}
+              className="group block border border-border bg-card transition-colors hover:border-foreground"
               itemScope
               itemType="https://schema.org/BlogPosting"
             >
@@ -190,7 +200,7 @@ function JournalPage() {
                   </span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
@@ -200,13 +210,11 @@ function JournalPage() {
         <div className="mt-24 border-t border-border pt-12 md:mt-32 md:pt-16">
           <div className="grid gap-6 md:grid-cols-12">
             <div className="md:col-span-5">
-              <p className="font-display text-3xl tracking-tight">
-                Written from inside the house.
-              </p>
+              <p className="font-display text-3xl tracking-tight">Written from inside the house.</p>
             </div>
             <div className="text-sm leading-relaxed text-muted-foreground md:col-span-4 md:col-start-7">
-              The Journal is produced by People&apos;s Choice Handicrafts in Bharatpur XII, Chitwan, Nepal —
-              a curated shop of hemp, pashmina, jewelry and ritual brassware open everyday.
+              This journal is written by People&apos;s Choice Handicrafts in Bharatpur XII, Chitwan,
+              Nepal — a shop for hemp, pashmina, jewelry and brass items, open every day.
             </div>
           </div>
         </div>
